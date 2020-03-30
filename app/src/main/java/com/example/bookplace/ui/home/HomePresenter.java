@@ -28,6 +28,7 @@ public class HomePresenter<T extends IHomeFragment> extends BasePresenter<T> {
         @Override
         public void onResponse(Call<List<BookResponse>> call, Response<List<BookResponse>> response) {
             mIView.showBooks(response.body());
+            mIView.hideProgressDialog();
         }
 
         @Override
@@ -37,12 +38,14 @@ public class HomePresenter<T extends IHomeFragment> extends BasePresenter<T> {
     };
 
     public void onSetupRecyclerViewBooksComplete() {
+        mIView.showProgressDialog();
         getIDataManager()
                 .getBooksApiCall()
                 .enqueue(mShowBooksCallBack);
     }
 
     public void onSearchBookRequest(String q) {
+        mIView.showProgressDialog();
         getIDataManager()
                 .getBookSearchApiCall(q)
                 .enqueue(mShowBooksCallBack);

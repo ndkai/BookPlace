@@ -7,4 +7,7 @@ public interface IBaseView {
 
     void showToast(String msg);
 
+    void showProgressDialog();
+
+    void hideProgressDialog();
 }

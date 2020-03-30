@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         setupEventViews();
-        addFragment(R.id.container, new HomeFragment());
+        replaceFragment(R.id.container, new HomeFragment());
     }
 
     private void setupEventViews() {

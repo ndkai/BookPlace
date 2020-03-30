@@ -107,8 +107,8 @@ public class HomeFragment extends BaseFragment implements IHomeFragment {
 
         mHomePresenter.onSetupRecyclerViewBooksComplete();
 
-        mBasePaginationScrollListener.setmLayoutManager(mGridLayoutManager);
-        mRecyclerViewBooks.setOnScrollListener(mBasePaginationScrollListener);
+//        mBasePaginationScrollListener.setmLayoutManager(mGridLayoutManager);
+//        mRecyclerViewBooks.setOnScrollListener(mBasePaginationScrollListener);
     }
 
     private void addImgsToViewFlipper(List<Integer> flipperImgResIds) {

@@ -1,5 +1,6 @@
 package com.example.bookplace.ui.base;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -10,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.bookplace.R;
 import com.example.bookplace.di.MyApp;
 import com.example.bookplace.di.component.DaggerIActivityComponent;
 import com.example.bookplace.di.component.IActivityComponent;
@@ -22,6 +24,8 @@ import com.example.bookplace.di.module.ActivityModule;
 public class BaseActivity extends AppCompatActivity implements IBaseView{
 
     IActivityComponent mIActivityComponent;
+
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +42,13 @@ public class BaseActivity extends AppCompatActivity implements IBaseView{
                 .iAppComponent(myApp.getIAppComponent())
                 .activityModule(new ActivityModule(this))
                 .build();
+        initProgressDialog();
+    }
+
+    private void initProgressDialog() {
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setCanceledOnTouchOutside(false);
+        mProgressDialog.setMessage(getString(R.string.loading));
     }
 
     /*
@@ -54,6 +65,21 @@ public class BaseActivity extends AppCompatActivity implements IBaseView{
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void showProgressDialog() {
+        mProgressDialog.show();
+    }
+
+    @Override
+    public void hideProgressDialog() {
+        mProgressDialog.hide();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mProgressDialog.dismiss();
+        super.onDestroy();
+    }
 
     public void replaceFragment(int containerId, Fragment fragment) {
         getSupportFragmentManager().beginTransaction()

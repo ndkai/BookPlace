@@ -39,6 +39,16 @@ public class BaseFragment extends Fragment implements IBaseView{
         mBaseActivity.showToast(msg);
     }
 
+    @Override
+    public void showProgressDialog() {
+        getBaseActivity().showProgressDialog();
+    }
+
+    @Override
+    public void hideProgressDialog() {
+        getBaseActivity().hideProgressDialog();
+    }
+
     public void setUnbinder(Unbinder mUnbinder) {
         this.mUnbinder = mUnbinder;
     }

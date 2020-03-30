@@ -9,9 +9,9 @@ public class SplashPresenter<T extends ISplashActivity> extends BasePresenter<T>
     }
 
     public void onNavigateToOtherActivity() {
-//        if (getIDataManager().getShowIntroPref())
-//             mIView.openIntroActivity();
-//        else
+        if (getIDataManager().getShowIntroPref())
+             mIView.openIntroActivity();
+        else
             mIView.openMainActivity();
     }
 }
