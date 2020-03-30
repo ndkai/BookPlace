@@ -1,6 +1,8 @@
 package com.example.bookplace.di.module;
 
 
+import android.content.Context;
+
 import com.example.bookplace.data.DataManager;
 import com.example.bookplace.data.IDataManager;
 import com.example.bookplace.data.api.Api;
@@ -10,6 +12,7 @@ import com.example.bookplace.data.db.IDb;
 import com.example.bookplace.data.pref.IPref;
 import com.example.bookplace.data.pref.Pref;
 import com.example.bookplace.di.MyApp;
+import com.example.bookplace.di.annotation.AppContext;
 
 import dagger.Module;
 import dagger.Provides;
@@ -36,4 +39,9 @@ public class AppModule {
 
     @Provides
     IPref provideIPref(Pref pref) {return pref;}
+
+    @Provides
+    @AppContext
+    Context provideAppContext() {return mMyApp;}
+
 }

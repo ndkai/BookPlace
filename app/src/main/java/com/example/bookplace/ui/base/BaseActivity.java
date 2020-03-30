@@ -1,6 +1,9 @@
 package com.example.bookplace.ui.base;
 
 import android.os.Bundle;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -24,6 +27,12 @@ public class BaseActivity extends AppCompatActivity implements IBaseView{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // make status bar background transparent
+        getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        );
+
         MyApp myApp = (MyApp) getApplication();
         mIActivityComponent = DaggerIActivityComponent.builder()
                 .iAppComponent(myApp.getIAppComponent())
@@ -46,16 +55,44 @@ public class BaseActivity extends AppCompatActivity implements IBaseView{
     }
 
 
-    protected void replaceFragment(int containerId, Fragment fragment) {
+    public void replaceFragment(int containerId, Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(containerId, fragment)
                 .commit();
     }
 
-    protected void addFragment(int containerId, Fragment fragment) {
+    public void addFragment(int containerId, Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .add(containerId, fragment)
+                .addToBackStack("")
                 .commit();
+    }
+
+    public void backFragment() {
+        getSupportFragmentManager().popBackStack();
+    }
+
+    public void showKeyboard() {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        inputMethodManager.toggleSoftInput(
+                InputMethodManager.SHOW_FORCED,
+                InputMethodManager.HIDE_IMPLICIT_ONLY);
+    }
+
+    /*
+    *  set auto show / hide keyboard when a editext focused.
+    * */
+    public void setAutoShowHideKeyboardFor(EditText editText) {
+        editText.setOnFocusChangeListener((v, hasFocus) -> {
+            InputMethodManager inputMethodManager =
+                    (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            if (hasFocus)
+                inputMethodManager.showSoftInput(editText, 0);
+            else
+                inputMethodManager.hideSoftInputFromWindow(
+                    editText.getWindowToken(), 0);
+        });
     }
 
 }

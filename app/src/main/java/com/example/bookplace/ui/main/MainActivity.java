@@ -1,5 +1,7 @@
 package com.example.bookplace.ui.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.bookplace.R;
@@ -15,6 +17,11 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity {
     @BindView(R.id.nav_bottom)
     BottomNavigationView mNav;
+
+    public static void open(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,7 +1,12 @@
 <resources>
-    <string name="app_name">BookPlace</string>
+    <string name="app_name">Book Place</string>
     <string name="home">Home</string>
     <string name="notification">Notification</string>
     <string name="me">Me</string>
     <string name="search">Search</string>
+    <string name="go">Go!</string>
+    <string name="title">Title</string>
+    <string name="author">Author</string>
+    <string name="price">Price</string>
+    <string name="hint_search">Type book keywords</string>
 </resources>

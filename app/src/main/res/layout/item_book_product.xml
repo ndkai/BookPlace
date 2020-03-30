@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    style="@style/ClickAnimStyle">
+
+    <ImageView
+        android:id="@+id/img_product"
+        android:layout_width="160dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/star_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:isIndicator="false"
+        style="?attr/ratingBarStyleSmall"
+        android:numStars="5"
+        android:progress="100"
+        android:max="100"
+        android:layout_gravity="center_horizontal"
+        android:progressTint="#F4F412"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kỹ năng giao"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_gravity="center"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:paddingHorizontal="5dp"/>
+
+    <TextView
+        android:id="@+id/tv_autor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trung dz"
+        android:textColor="@color/colorPrimary"
+        android:layout_gravity="center"
+        android:paddingTop="1dp"
+        android:textSize="14sp"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100.000đ"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_gravity="center"
+        android:paddingTop="2dp"
+        android:paddingBottom="3dp"
+        android:textSize="18sp"
+        android:textAlignment="center"/>
+
+</LinearLayout>

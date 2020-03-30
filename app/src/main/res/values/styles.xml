@@ -6,7 +6,31 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowTranslucentStatus">true</item>
+
+        <!--    make status bar background transparent     -->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+
+        <!--    change color status bar item to grey    -->
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
+    <style name="FullParent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="ThemeSplash" parent="AppTheme">
+
+<!--        // make background of status bar and container are the same-->
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="colorPrimaryDark">@color/background</item>
+
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="ClickAnimStyle">
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
 </resources>
